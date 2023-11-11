@@ -26,7 +26,7 @@ function ContactsScreens() {
       <Stack.Screen
           name="ProfileContact"
           component={ProfileContact}
-          options={{title: "ProfileContact"}}/>
+          options={{title: "Profile Contact"}}/>
     </Stack.Navigator>
   )
 }
@@ -46,7 +46,7 @@ function FavoriteScreens() {
         <Stack.Screen
           name="ProfileContact"
           component={ProfileContact}
-          options={{title: "Profile contact"}}  
+          options={{title: "Profile Contact"}}  
         />
       </Stack.Navigator>
   )

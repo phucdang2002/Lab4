@@ -13,15 +13,21 @@ const ProfileContact = ({route}) => {
         <ContactThum avatar={avatar} name={name} phone={phone}/>
       </View>
       <View style={styles.detailsSection}>
-        <DetailListIt icon="envelope" title = "Email" subtitle={email}/>
+        <DetailListIt icon="email" title = "Email" subtitle={email}/>
         <DetailListIt icon="phone" title = "Work" subtitle={phone}/>
-        <DetailListIt icon="mobile-phone" title = "Personal" subtitle={cell}/>
+        <DetailListIt icon="cellphone" title = "Personal" subtitle={cell}/>
         <View style={{alignItems: 'center'}}>
           <IconButton
             icon={favorite == true ? 'star-check' : 'star-check-outline'}
             iconColor="#663399"
-            size={20}
-            onPress={() => {}}
+            size={30}
+            onPress={()=>{
+              if (favorite==false){
+                favorite = true;
+              }else {
+                favorite = false;
+              }
+            }}
           />
         </View>
       </View>
