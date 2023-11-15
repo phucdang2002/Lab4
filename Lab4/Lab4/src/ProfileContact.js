@@ -2,6 +2,7 @@ import {StyleSheet, View} from 'react-native';
 import {IconButton} from 'react-native-paper';
 import ContactThum from './ContactThum';
 import DetailListIt from './DetailListItem';
+import { updateFavorite } from './Store';
 
 const ProfileContact = ({route}) => {
   const {contact} = route.params;
@@ -21,13 +22,7 @@ const ProfileContact = ({route}) => {
             icon={favorite == true ? 'star-check' : 'star-check-outline'}
             iconColor="#663399"
             size={30}
-            onPress={()=>{
-              if (favorite==false){
-                favorite = true;
-              }else {
-                favorite = false;
-              }
-            }}
+            onPress={()=>{updateFavorite(id)}}
           />
         </View>
       </View>

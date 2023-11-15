@@ -1,7 +1,6 @@
 import 'react-native-gesture-handler';
 import { createStackNavigator } from "@react-navigation/stack";
 import Contacts from "./src/Contact";
-import ContactListItem from "./src/ContactListItem";
 import Favorites from "./src/Favorites";
 import store from "./src/Store";
 import {Provider} from "react-redux";

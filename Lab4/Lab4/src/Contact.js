@@ -1,19 +1,27 @@
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 import 'react-native-gesture-handler';
 import {useSelector, useDispatch} from 'react-redux';
 import {mapContacts, fetchContactsSuccess} from './Store';
-import {FlatList, SafeAreaView, StyleSheet, View} from 'react-native';
-import ContactListItem from './ContactListItem'
+import {FlatList, SafeAreaView, StyleSheet} from 'react-native';
+import ContactListItem from './ContactListItem';
+import axios from 'axios';
 
 const keyExtractor = ({phone}) => phone;
 
 const fetchContacts = async () => {
-  const data = await fetch('https://randomuser.me/api/?results=50');
-  const ContactData = await data.json();
+  const contacts = await axios.get('https://randomuser.me/api/?results=50');
+  const ContactData = await contacts.data;
   return ContactData.results.map(mapContacts);
 };
+// const data = [];
+// export const updateFavorite = (contactid) =>{
+//     const current = data.find(item=>item.id === contactid);
+//     current.favorite = current.favorite===true?false:true;
+//   }
+// }
+
 const Contacts = ({navigation}) => {
-  const {contacts}  = useSelector((state) => state);
+  const {contacts} = useSelector(state => state);
   const dispatch = useDispatch();
   useEffect(() => {
     fetchContacts()
@@ -21,22 +29,21 @@ const Contacts = ({navigation}) => {
         dispatch(fetchContactsSuccess(contacts));
       })
       .catch(e => {});
-  },[]);
-
+  }, []);
   const renderContacts = ({item}) => {
     const {name, avatar, phone} = item;
     return (
-        <ContactListItem
+      <ContactListItem
         name={name}
         avatar={avatar}
         phone={phone}
-        onPress={() => navigation.navigate("ProfileContact", {contact: item})}
+        onPress={() => navigation.navigate('ProfileContact', {contact: item})}
       />
-    )
+    );
   };
   return (
     <SafeAreaView style={styles.container}>
-    <FlatList
+      <FlatList
         data={contacts}
         keyExtractor={keyExtractor}
         renderItem={renderContacts}
@@ -44,6 +51,7 @@ const Contacts = ({navigation}) => {
     </SafeAreaView>
   );
 };
+
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
