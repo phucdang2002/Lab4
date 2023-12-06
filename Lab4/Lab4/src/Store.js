@@ -16,25 +16,6 @@ export const mapContacts = (contact) => {
   };
 };
 
-// const [favoriteIt, setFavoriteIt] = useState([]);
-// const updateFavorite = (contactid) =>{
-//   let copyFavorite = [...favoriteIt];
-//   const index = copyFavorite.findIndex(item=>item.id === contactid);
-//   if (index === -1){
-//     const getCurrent = contacts.find(item=>item.id === contactid);
-//     copyFavorite.push
-//   }
-//   const {id, name, avatar, phone, cell, email, favorite} = contact;
-//   return {
-//     id,
-//     name,
-//     avatar,
-//     phone,
-//     cell,
-//     email,
-//     favorite: favorite===false ? true : false,
-//   };
-// }
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState: {
@@ -44,6 +25,9 @@ const contactsSlice = createSlice({
     fetchContactsSuccess: (state, action) => {
       state.contacts = action.payload;
     },
+    update: (state, action) => {
+      state.contacts = action.payload;
+    }
   },
 });
 export const {fetchContactsSuccess} = contactsSlice.actions;

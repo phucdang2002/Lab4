@@ -13,12 +13,6 @@ const fetchContacts = async () => {
   const ContactData = await contacts.data;
   return ContactData.results.map(mapContacts);
 };
-// const data = [];
-// export const updateFavorite = (contactid) =>{
-//     const current = data.find(item=>item.id === contactid);
-//     current.favorite = current.favorite===true?false:true;
-//   }
-// }
 
 const Contacts = ({navigation}) => {
   const {contacts} = useSelector(state => state);

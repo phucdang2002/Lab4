@@ -47,7 +47,7 @@ function FavoriteScreens() {
           component={ProfileContact}
           options={{title: "Profile Contact"}}  
         />
-      </Stack.Navigator>
+    </Stack.Navigator>
   )
 }
 
